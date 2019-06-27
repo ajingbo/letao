@@ -1,0 +1,31 @@
+.body_bg {
+    background-color: #222D32;
+}
+.red {
+    color: #A94442;
+}
+/*lvha*/
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+}
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.panel .panel-title {
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    font-size: 20px;
+}
+.mt_150 {
+    margin-top: 150px;
+}
+.mt_20 {
+    margin-top: 20px;
+}
