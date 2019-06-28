@@ -4,8 +4,8 @@
 
 
 $(function() {
+  //  1-柱状图
   // 基于准备好的dom，初始化echarts实例
-  // 柱状图
   var echars1 = echarts.init(document.querySelector(".echarts_1"));
 
   // 指定图表的配置项和数据
