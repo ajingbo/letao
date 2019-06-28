@@ -41,6 +41,9 @@ ul {
     z-index: 999;
     transition: all 1s;
 }
+.lt_aside.hidemenu {
+    left:-180px;
+}
 .lt_aside .brand {
     width: 100%;
     height: 50px;
@@ -93,6 +96,9 @@ ul {
     padding-top: 50px;
     transition: all 1s;
 }
+.lt_main.hidemenu {
+    padding-left: 0px;
+}
 .lt_topbar {
     width: 100%;
     height: 50px;
@@ -102,6 +108,9 @@ ul {
     top: 0;
     padding-left: 180px;
     transition: all 1s;
+}
+.lt_topbar.hidemenu {
+    padding: 0;
 }
 .lt_topbar a {
     width: 50px;
