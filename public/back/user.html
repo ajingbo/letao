@@ -66,6 +66,25 @@
             <li><a href="#">管理系统</a></li>
             <li class="active">用户管理</li>
         </ol>
+
+        <div class="lt_content">
+            <!--表格-->
+            <!--表头 => 序号 用户名 手机号 状态 操作-->
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th width="10%">序号</th>
+                    <th width="20%">用户名</th>
+                    <th width="30%">手机号</th>
+                    <th width="20%">状态</th>
+                    <th width="20%">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <!--模板引擎渲染-->
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
@@ -94,10 +113,33 @@
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 </body>
+
+<!--模板引擎渲染-->
+<script type="text/html" id="tpl">
+    {{ each rows v i }}
+    <tr>
+        <!-- 当前页的个数 + 前面的页数*每页多少条 -->
+        <td>{{ i + 1 + (page-1)*size }}</td>
+        <td>{{ v.username }}</td>
+        <td>{{ v.mobile }}</td>
+        <!--isDelete 标记当前用户状态 1表示正常 0表示禁用-->
+        <td>{{ v.isDelete === 1 ? "正常" : "禁用" }}</td>
+        <td data-id="{{ v.id }}">
+            {{ if v.isDelete === 1 }}
+            <button class="btn btn-danger">禁用</button>
+            {{ /if }}
+            {{ if v.isDelete === 0 }}
+            <button class="btn btn-success">启用</button>
+            {{ /if }}
+        </td>
+    </tr>
+    {{ /each }}
+</script>
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
 <script src="./lib/nprogress/nprogress.js"></script>
+<script src="./lib/artTemplate/template-web.js"></script>
 <script src="js/common.js"></script>
-<!--<script src="js/index.js"></script>-->
+<script src="js/user.js"></script>
 </html>
