@@ -67,6 +67,7 @@
             <li class="active">分类管理</li>
             <li class="active">二级分类</li>
         </ol>
+
         <div class="lt_content">
             <button class="btn btn-default" id="addBtn">添加分类</button>
             <table class="table table-bordered table-hover mt_20">
@@ -96,7 +97,7 @@
 <!-- 添加了 data-dismiss="modal" 可以用于关闭模态框 -->
 <!-- 给模态框添加 modal-lg 大型,  modal-sm 小型, 不加 中等 -->
 
-<!--最外层蒙层-->
+<!--最外层蒙层   退出模态框-->
 <div class="modal fade" tabindex="-1" id="logoutModal">
     <!--模态框结构-->
     <div class="modal-dialog modal-sm" >
@@ -135,10 +136,17 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <!-- 挖个坑 -->
+                                <!-- 挖个坑 模板引擎渲染-->
                             </ul>
                         </div>
+                        <!--添加一个input表单元素 存储categoryId-->
+                        <input type="hidden" name="categoryId">
+                        <!--火热的品牌-->
+                        <input type="hidden" name="hot" value="1">
+
+
                     </div>
+
                     <div class="form-group">
                         <input type="text"  name="brandName" class="form-control" placeholder="请输入二级分类">
                     </div>
@@ -154,6 +162,8 @@
 
                     <div class="form-group" id="imgBox">
                         <img src="./images/none.png" width="100" alt="">
+                        <!-- 准备一个 input 用于存储 图片地址, 利用隐藏域存数据进行提交 -->
+                        <input type="hidden" name="brandLogo">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -164,17 +174,24 @@
         </div>
     </div>
 </div>
-<!--模板渲染-->
+<!--添加分类列表  模板渲染-->
 <script type="text/html" id="secondTpl">
     {{ each rows v i }}
         <tr>
             <td>{{ i + 1 +(page-1)*size }}</td>
             <td>{{ v.categoryName}}</td>
             <td>{{ v.brandName }}</td>
-            <td><img src="{{ v.brandLogo }}" alt=""style="height:50px"></td>
+            <td><img src="{{ v.brandLogo }}" alt="" style="height:50px"></td>
         </tr>
     {{ /each }}
 </script>
+<!--添加分类模态框 模板渲染-->
+<script type="text/html" id="dropdownTpl">
+   {{ each rows  v i }}
+   <li><a href="#" data-id="{{ v.id }}">{{ v.categoryName }}</a></li>
+   {{ /each }}
+</script>
+
 <script src="./lib/jquery/jquery.min.js"></script>
 <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
 <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
